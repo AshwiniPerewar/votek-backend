@@ -62,7 +62,7 @@ userController.get("/user-details",async(req,res)=>
     const user= await UserModel.findOne({_id:userToken.userId});
     if(user && user.userRole=="admin")
     res.status(200).send({msg:"success",userDetails:{email:user.email,fullName:user.fullName,userRole:user.userRole,pollsCreated:user.pollsCreated,templateCreated:user.templateCreated}});
-    if(user && user.userRole=="user")
+    else if(user && user.userRole=="user")
     res.status(200).send({msg:"success",userDetails:{email:user.email,fullName:user.fullName,userRole:user.userRole,pollsAttended:user.pollsAttended}});
     else
     res.status(400).send({msg:"Something went wrong while getting user details"});
