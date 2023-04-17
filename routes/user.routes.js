@@ -35,6 +35,7 @@ userController.post("/signup", async(req, res) => {
             })
              await user.save();
              const token = generateToken({
+                 userId:user._id,
                 email: user.email,
                 fullName: user.fullName,
                 role:role
